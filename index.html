@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Daily Todo List Page</title>
+	</head>
+	<body>
+		<div>
+			<h1>Daily TODO</h1>
+			<ul id="daily_todo_checklist">
+				<li>
+					<input type="checkbox">
+					</input>
+					<input type="text">
+					</input>
+				</li>
+			</ul>	
+		</div>
+		<div>
+			<h1>Long term TODO</h1>
+			<ul>
+				<li>
+					<input type="checkbox">
+					</input>
+					<input type="text">
+					</input>
+				</li>
+				<li>
+					<input type="checkbox">
+					</input>
+					<input type="text">
+					</input>
+				</li>
+			</ul>	
+		</div>
+		<div>
+			<h1>Ideas</h1>
+			<ul>
+				<li>
+					<input type="text">
+					</input>
+				</li>
+				<li>
+					<input type="text">
+					</input>
+				</li>
+			</ul>	
+		</div>
+		<div>
+			<h1>Mindfulness</h1>
+			<h2>Journaling Here</h2>
+			<input type="text">
+			</input>
+			<h2>Activities Brought Me Joy</h2>
+			<ul>
+				<li>
+					<input type="text">
+					</input>
+				</li>
+				<li>
+					<input type="text">
+					</input>
+				</li>
+			</ul>
+		</div>
+		<script>
+			const dailyCL = document.getElementById("daily_todo_checklist");
+		  const textbox = dailyCL.children[0].children[1];
+			function addNewChecklistItem(textbox) {
+		
+			textbox.addEventListener("keydown", function(e){
+				if(e.key === 'Enter') {
+					const newElement = document.createElement('li');
+					const newCheckbox = document.createElement('input');
+					newCheckbox.setAttribute("type", "checkbox");
+					const newInputField = document.createElement('input');
+					newInputField.setAttribute("type", "text");
+					newElement.appendChild(newCheckbox);
+					newElement.appendChild(newInputField);
+
+					textbox.insertAdjacentElement("afterend",newElement);
+					addNewChecklistItem(newElement);
+				}
+			})
+
+			}
+			addNewChecklistItem(textbox);
+		</script>
+	</body>
+
+</html>
